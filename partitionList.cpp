@@ -12,21 +12,21 @@ ListNode *partition(ListNode *head, int x) {
 	ListNode *lh = NULL, *gh = NULL, *ghead = NULL, *lhead = NULL;
 	while(head != NULL){
 		if(head->val < x){
-			ListNode h(head->val);
+			ListNode *h = new ListNode(head->val);
 			if(lh == NULL){
-				lh = &h ;
+				lh = h ;
 				lhead = lh ;
 			}else{
-				lh->next = &h;
+				lh->next = h;
 				lh = lh->next ;
 			}
 		}else{
-			ListNode h(head->val);
+			ListNode *h = new ListNode(head->val) ;
 			if(gh == NULL){
-				gh = &h ;
+				gh = h ;
 				ghead = gh ;
 			}else{
-				gh->next = &h;
+				gh->next = h;
 				gh = gh->next ;
 			}
 		}
