@@ -3,7 +3,7 @@
 
 using namespace std ;
 bool dfs(vector<vector<char> > &board, vector<vector<bool> > &visited, int i, int j, string word){
-	static int jl = board[0].size(), il = board.size();
+	int jl = board[0].size(), il = board.size();
 	if(word.length() == 0){
 		return true ;
 	}else if(i >= il || j >= jl || i < 0 || j < 0){
@@ -38,15 +38,15 @@ bool exist(vector<vector<char> > &board, string word) {
 			}
 		}
 	}
-	return false ;
+//	return false ;
 }
 int main(){
 	vector<vector<char> > board(0) ;
-	vector<char> str1 ({'a', 'b', 'c', 'e'}) ;
+	vector<char> str1 ({'a'}) ;
 	vector<char> str2 ({'s', 'f', 'c', 's'}) ;
 	vector<char> str3 ({'a', 'd', 'e', 'e'}) ;
 	board.push_back (str1) ;
-	board.push_back (str2) ;
-	board.push_back (str3) ;
-	cout << "result: " << exist(board, "abccef") << '\n' ;
+	//board.push_back (str2) ;
+	//board.push_back (str3) ;
+	cout << "result: " << exist(board, "ab") << '\n' ;
 }
