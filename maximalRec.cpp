@@ -4,7 +4,7 @@
 
 using namespace std;
 
-//Time Complexity O(maxHeight * MN) 
+//Time Complexity O(MN) 
 int maximalRectangle(vector<vector<char> > &matrix) {
 	int il = matrix.size(), jl, i, j, max = 0, maxColumn = 0;
 	vector<vector<int> > dp(0) ;
@@ -31,24 +31,26 @@ int maximalRectangle(vector<vector<char> > &matrix) {
 		}
 	}
 	for(i = 0; i < il; i++){
-		vector<int> lineMax (maxColumn + 1, 0);
-		vector<int> lineT(lineMax) ;
-		for(j = 0; j < jl; j++){
-			int k ;
-			for(k = 1; k <= maxColumn; k++){
-				if(k > dp[i][j]){
-					lineT[k] = 0 ;
-				}else{
-					lineT[k] += k ;
-					if(lineT[k] > lineMax[k]){
-						lineMax[k] = lineT[k] ;
-					}
-				}
-				if(lineMax[k] > max){
-					max = lineMax[k] ;
-				}
-			}
-
+	    vector<int> dpv (dp[i].begin(), dp[i].end()) ;
+		if(max < largestRectangleArea(dp[i])){
+		    max = largestRectangleArea(dp[i]);
+		}
+	}
+	return max ;
+}
+int largestRectangleArea(vector<int> &height) {
+	stack<int> pos ;
+	int i = 0, max = 0;
+	while(i < height.size() || !pos.empty()){
+		int topPos = pos.empty() ? -1 : pos.top() ;
+		if(i < height.size() && (pos.empty() || height[topPos] < height[i] )){
+			pos.push(i) ;
+			i ++ ;
+		}else{
+			int temp = 0 ;
+			pos.pop() ;
+			temp = height[topPos] * (pos.empty() ? i : i - pos.top() - 1) ;
+			max = (temp > max ? temp : max) ;
 		}
 	}
 	return max ;
