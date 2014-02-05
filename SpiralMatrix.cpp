@@ -16,7 +16,7 @@ You should return the following matrix:
 
 using namespace std;
 
-void fill(vector<vector<int> > m, int n, int i, int j, int s){
+void fill(vector<vector<int> > &m, int n, int i, int j, int s){
 	if(n <= 0){
 		return ;
 	}else if(n == 1){
@@ -39,6 +39,7 @@ vector<vector<int> > generateMatrix(int n){
 	vector<int> line(n) ;
 	vector<vector<int> > ret(n, line) ;
 	fill(ret, n, 0, 0, 1) ;
+	return ret ;
 }
 
 int main(){
