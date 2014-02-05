@@ -14,13 +14,14 @@ return its bottom-up level order traversal as:
   [9,20],
   [3],
 ]
-confused what "{1,#,2,3}" means? 
 */
 #include "stdafx.h"
 #include <iostream>
 #include <vector>
 #include <map>
 #include <queue>
+
+using namespace std;
 
 struct TreeNode{
 	int val;
