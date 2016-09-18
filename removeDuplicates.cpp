@@ -2,7 +2,19 @@
 #include <cstring>
 
 using namespace std;
-
+int removeDuplicate(vector<int> &array ){
+	unordered_map<int, bool> occur ;
+	int i = 0, j = array.size() - 1;
+	for(i = 0; i <= j ; i++){
+		if(occur[array[i] ] ){
+			array[i] = array[j] ;
+			j -- ;
+			i -- ;
+		}else{
+			occur[array[i] ] = true;
+		}
+	}
+}
 int removeDuplicates(int A[], int n) {
     int i=0, nn = n;
     while(i +1<nn){
